@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intelligent Computing Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0f0f0f;
+      --paper: #f7f4ef;
+      --accent: #c8392b;
+      --accent2: #2563a8;
+      --muted: #8a8070;
+      --rule: #d4cfc6;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem; letter-spacing: 0.15em;
+      color: var(--accent); text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.8rem; letter-spacing: 0.08em;
+      text-decoration: none; color: var(--ink);
+      text-transform: uppercase; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 5rem;
+    }
+    .hero-left {
+      padding: 6rem 4rem 4rem;
+      display: flex; flex-direction: column; justify-content: center;
+      border-right: 1px solid var(--rule);
+    }
+    .hero-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 0.2em;
+      color: var(--accent); text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 4.5vw, 5rem);
+      line-height: 1.05; font-weight: 900;
+      margin-bottom: 1rem;
+    }
+    .hero-title span { color: var(--accent); }
+    .hero-subtitle {
+      font-size: 1rem; color: var(--muted);
+      line-height: 1.7; max-width: 420px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      background: var(--ink); color: var(--paper);
+      text-decoration: none;
+      font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
+    .btn-secondary {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      border: 1px solid var(--ink); color: var(--ink);
+      text-decoration: none;
+      font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { background: var(--ink); color: var(--paper); transform: translateY(-2px); }
+
+    .hero-right {
+      padding: 6rem 4rem 4rem;
+      display: flex; flex-direction: column; justify-content: center;
+      gap: 2rem;
+    }
+    .stat-card {
+      border-left: 3px solid var(--rule);
+      padding-left: 1.5rem;
+      opacity: 0; transform: translateX(20px);
+      animation: slideIn 0.6s forwards;
+    }
+    .stat-card:nth-child(2) { animation-delay: 0.15s; }
+    .stat-card:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
+    .stat-card:hover { border-left-color: var(--accent); }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem; font-weight: 700;
+      line-height: 1; color: var(--accent);
+    }
+    .stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem; }
+
+    /* ── SHARED SECTION STYLES ── */
+    section { padding: 6rem 4rem; }
+    .section-header {
+      display: flex; align-items: baseline; gap: 1.5rem;
+      margin-bottom: 4rem;
+      border-bottom: 1px solid var(--rule); padding-bottom: 1.5rem;
+    }
+    .section-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; color: var(--muted); letter-spacing: 0.15em;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; font-weight: 700;
+    }
+
+    /* ── RESEARCH ── */
+    #research { background: var(--ink); color: var(--paper); }
+    #research .section-title { color: var(--paper); }
+    #research .section-num { color: #555; }
+    #research .section-header { border-bottom-color: #333; }
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .research-item {
+      padding: 2.5rem;
+      border: 1px solid #222;
+      transition: background 0.3s;
+    }
+    .research-item:hover { background: #1a1a1a; }
+    .research-icon { font-size: 2rem; margin-bottom: 1.2rem; }
+    .research-item h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; margin-bottom: 0.8rem; color: var(--paper);
+    }
+    .research-item p { font-size: 0.85rem; color: #8a8070; line-height: 1.7; }
+
+    /* ── PI / ADVISOR ── */
+    #advisor { background: var(--paper); }
+    .advisor-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 3rem; align-items: start;
+      padding: 3rem;
+      border: 1px solid var(--rule);
+      max-width: 860px;
+    }
+    .advisor-avatar {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: var(--rule);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem;
+      flex-shrink: 0;
+    }
+    .advisor-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .advisor-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; color: var(--accent);
+      letter-spacing: 0.15em; text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .advisor-bio {
+      font-size: 0.9rem; color: var(--muted);
+      line-height: 1.75; margin-bottom: 1.5rem;
+    }
+    .advisor-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .advisor-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.55rem 1.2rem;
+      border: 1px solid var(--rule);
+      text-decoration: none; color: var(--ink);
+      font-size: 0.78rem; letter-spacing: 0.05em;
+      transition: all 0.2s;
+    }
+    .advisor-link:hover {
+      border-color: var(--accent); color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .advisor-link.company {
+      background: var(--ink); color: var(--paper);
+      border-color: var(--ink);
+    }
+    .advisor-link.company:hover {
+      background: var(--accent); border-color: var(--accent); color: var(--paper);
+    }
+
+    /* ── MEMBERS ── */
+    #members { background: #f0ece4; }
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .member-card {
+      text-align: center; padding: 2rem 1rem;
+      border: 1px solid var(--rule); background: var(--paper);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .member-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .member-avatar {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: var(--rule);
+      margin: 0 auto 1rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+    }
+    .member-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem;
+    }
+    .member-role { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.04em; }
+
+    /* ── NEWS / EVENTS ── */
+    #news { background: var(--ink); color: var(--paper); }
+    #news .section-title { color: var(--paper); }
+    #news .section-num { color: #555; }
+    #news .section-header { border-bottom-color: #333; }
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .news-card {
+      background: #1a1a1a;
+      border: 1px solid #222;
+      padding: 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .news-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .news-badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem; letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      margin-bottom: 1rem;
+    }
+    .badge-paper  { background: #1e3a5f; color: #7eb3f0; }
+    .badge-award  { background: #3d2200; color: #f0a830; }
+    .badge-event  { background: #1a3322; color: #5cba85; }
+    .badge-talk   { background: #2d1a3d; color: #b57ef0; }
+    .news-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; color: #555;
+      letter-spacing: 0.1em; margin-bottom: 0.6rem;
+    }
+    .news-title {
+      font-size: 0.95rem; font-weight: 500;
+      color: var(--paper); line-height: 1.5;
+      margin-bottom: 0.7rem;
+    }
+    .news-desc { font-size: 0.8rem; color: #8a8070; line-height: 1.65; }
+
+    /* ── PUBLICATIONS ── */
+    #publications { background: var(--paper); }
+    .pub-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .pub-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem; align-items: start;
+      padding: 1.5rem; background: #f0ece4;
+      border-left: 3px solid var(--rule);
+      transition: border-color 0.2s;
+    }
+    .pub-item:hover { border-left-color: var(--accent); }
+    .pub-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem; color: var(--accent);
+      letter-spacing: 0.1em; padding-top: 0.2rem;
+      min-width: 3rem;
+    }
+    .pub-title { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.4rem; }
+    .pub-authors { font-size: 0.8rem; color: var(--muted); }
+    .pub-venue {
+      display: inline-block; margin-top: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; color: var(--accent2);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: #080808; color: var(--paper);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+    #contact .section-title { color: var(--paper); }
+    #contact .section-num { color: #555; }
+    #contact .section-header { border-bottom-color: #222; }
+    .contact-row {
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      padding-bottom: 1.5rem; margin-bottom: 1.5rem;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .contact-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; color: #555;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      min-width: 5rem; padding-top: 0.1rem;
+    }
+    .contact-value { font-size: 0.9rem; color: #aaa; line-height: 1.6; }
+    .join-box {
+      background: #111; border: 1px solid #222;
+      padding: 2.5rem; display: flex; flex-direction: column; gap: 1rem;
+      justify-content: center;
+    }
+    .join-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; color: var(--paper);
+    }
+    .join-box p { font-size: 0.85rem; color: #666; line-height: 1.7; }
+    .join-box a {
+      display: inline-block; margin-top: 0.5rem;
+      padding: 0.75rem 2rem;
+      background: var(--accent); color: white;
+      text-decoration: none; font-size: 0.8rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      transition: opacity 0.2s;
+    }
+    .join-box a:hover { opacity: 0.85; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #040404; color: #333;
+      padding: 2rem 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 0.1em;
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.7s, transform 0.7s;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { border-right: none; border-bottom: 1px solid var(--rule); padding: 8rem 1.5rem 3rem; }
+      .hero-right { padding: 3rem 1.5rem; flex-direction: row; flex-wrap: wrap; }
+      section { padding: 4rem 1.5rem; }
+      .research-grid, .news-grid { grid-template-columns: 1fr; }
+      .members-grid { grid-template-columns: 1fr 1fr; }
+      .advisor-card { grid-template-columns: 1fr; }
+      #contact { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">ICL · Intelligent Computing Lab</div>
+  <ul class="nav-links">
+    <li><a href="#research">Research</a></li>
+    <li><a href="#advisor">PI</a></li>
+    <li><a href="#members">People</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#publications">Papers</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Est. 2018 · Peking University</div>
+    <h1 class="hero-title">Pushing the<br><span>Frontiers</span><br>of Intelligence</h1>
+    <p class="hero-subtitle">
+      We are a research group focused on machine learning, computer vision, and natural language processing — bridging theoretical foundations with real-world impact.
+    </p>
+    <div class="hero-buttons">
+      <a href="#research" class="btn-primary">Our Research</a>
+      <a href="#news" class="btn-secondary">Latest News</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-card">
+      <div class="stat-num">42</div>
+      <div class="stat-label">Publications</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">18</div>
+      <div class="stat-label">Lab Members</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">6</div>
+      <div class="stat-label">Years of Research</div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-header fade-in">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Research Areas</h2>
+  </div>
+  <div class="research-grid">
+    <div class="research-item fade-in">
+      <div class="research-icon">🤖</div>
+      <h3>Machine Learning Theory</h3>
+      <p>We study the mathematical foundations of deep learning, including generalization, optimization, and robustness — building principled frameworks for reliable AI.</p>
+    </div>
+    <div class="research-item fade-in">
+      <div class="research-icon">👁️</div>
+      <h3>Computer Vision</h3>
+      <p>Developing next-generation visual perception systems spanning object detection, 3D reconstruction, and scene understanding for real-world deployment.</p>
+    </div>
+    <div class="research-item fade-in">
+      <div class="research-icon">💬</div>
+      <h3>Natural Language Processing</h3>
+      <p>Building large-scale language and multimodal understanding systems that push the boundaries of human-machine communication and reasoning.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ADVISOR / PI -->
+<section id="advisor">
+  <div class="section-header fade-in">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Principal Investigator</h2>
+  </div>
+  <div class="advisor-card fade-in">
+    <div class="advisor-avatar">👨‍🔬</div>
+    <div>
+      <div class="advisor-name">Prof. [Name]</div>
+      <div class="advisor-title">Associate Professor · School of Computer Science · Peking University</div>
+      <p class="advisor-bio">
+        Prof. [Name] leads the Intelligent Computing Lab at Peking University. His research spans machine learning theory, computer vision, and AI systems. He received his Ph.D. from [University] and has previously worked at [Institution]. He is also the founder of [Company Name], a startup translating cutting-edge lab research into industry solutions.
+      </p>
+      <div class="advisor-links">
+        <a href="#" class="advisor-link">📄 CV</a>
+        <a href="#" class="advisor-link">🎓 Google Scholar</a>
+        <a href="#" class="advisor-link">✉️ Email</a>
+        <!-- ↓ Replace with the actual company URL ↓ -->
+        <a href="https://your-company-url.com" target="_blank" rel="noopener" class="advisor-link company">🏢 Company Website →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERS -->
+<section id="members">
+  <div class="section-header fade-in">
+    <span class="section-num">03</span>
+    <h2 class="section-title">People</h2>
+  </div>
+  <div class="members-grid">
+    <div class="member-card fade-in">
+      <div class="member-avatar">👩‍💻</div>
+      <div class="member-name">Name A</div>
+      <div class="member-role">Postdoctoral Researcher</div>
+    </div>
+    <div class="member-card fade-in">
+      <div class="member-avatar">👨‍🎓</div>
+      <div class="member-name">Name B</div>
+      <div class="member-role">Ph.D. Student, Year 3</div>
+    </div>
+    <div class="member-card fade-in">
+      <div class="member-avatar">👩‍🎓</div>
+      <div class="member-name">Name C</div>
+      <div class="member-role">Ph.D. Student, Year 2</div>
+    </div>
+    <div class="member-card fade-in">
+      <div class="member-avatar">👨‍🎓</div>
+      <div class="member-name">Name D</div>
+      <div class="member-role">Master's Student</div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS & EVENTS -->
+<section id="news">
+  <div class="section-header fade-in">
+    <span class="section-num">04</span>
+    <h2 class="section-title">News & Events</h2>
+  </div>
+  <div class="news-grid">
+    <div class="news-card fade-in">
+      <span class="news-badge badge-paper">New Paper</span>
+      <div class="news-date">March 2025</div>
+      <div class="news-title">Paper accepted at CVPR 2025 on efficient vision transformers</div>
+      <div class="news-desc">Our work on lightweight attention mechanisms achieves state-of-the-art results with 40% fewer parameters.</div>
+    </div>
+    <div class="news-card fade-in">
+      <span class="news-badge badge-award">Award</span>
+      <div class="news-date">February 2025</div>
+      <div class="news-title">Best Paper Honorable Mention at ICLR Workshop</div>
+      <div class="news-desc">Congratulations to [Name] for receiving recognition at the workshop on robustness in deep learning.</div>
+    </div>
+    <div class="news-card fade-in">
+      <span class="news-badge badge-talk">Invited Talk</span>
+      <div class="news-date">January 2025</div>
+      <div class="news-title">Prof. [Name] gives keynote at [Conference Name]</div>
+      <div class="news-desc">Talk covering our recent advances in multimodal learning and future directions for the field.</div>
+    </div>
+    <div class="news-card fade-in">
+      <span class="news-badge badge-event">Event</span>
+      <div class="news-date">December 2024</div>
+      <div class="news-title">Annual lab retreat and end-of-year celebration</div>
+      <div class="news-desc">The whole team gathered to reflect on a productive year and plan research directions for 2025.</div>
+    </div>
+    <div class="news-card fade-in">
+      <span class="news-badge badge-paper">New Paper</span>
+      <div class="news-date">November 2024</div>
+      <div class="news-title">NeurIPS 2024 paper on generalization bounds accepted</div>
+      <div class="news-desc">Our theoretical work provides new insights into why deep networks generalize despite overparameterization.</div>
+    </div>
+    <div class="news-card fade-in">
+      <span class="news-badge badge-event">New Member</span>
+      <div class="news-date">September 2024</div>
+      <div class="news-title">Welcome to our new Ph.D. students joining this fall</div>
+      <div class="news-desc">We are thrilled to welcome three new Ph.D. students to the lab for the 2024–2025 academic year.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-header fade-in">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Selected Publications</h2>
+  </div>
+  <div class="pub-list">
+    <div class="pub-item fade-in">
+      <div class="pub-year">2025</div>
+      <div>
+        <div class="pub-title">Efficient Attention Mechanisms for Large-Scale Vision Transformers</div>
+        <div class="pub-authors">Author A, Author B, Prof. [Name] et al.</div>
+        <span class="pub-venue">CVPR 2025</span>
+      </div>
+    </div>
+    <div class="pub-item fade-in">
+      <div class="pub-year">2024</div>
+      <div>
+        <div class="pub-title">Generalization Bounds for Deep Neural Networks with Structured Sparsity</div>
+        <div class="pub-authors">Author C, Prof. [Name] et al.</div>
+        <span class="pub-venue">NeurIPS 2024</span>
+      </div>
+    </div>
+    <div class="pub-item fade-in">
+      <div class="pub-year">2024</div>
+      <div>
+        <div class="pub-title">Robust Multimodal Learning under Distribution Shift</div>
+        <div class="pub-authors">Author B, Author D, Prof. [Name] et al.</div>
+        <span class="pub-venue">ICML 2024</span>
+      </div>
+    </div>
+    <div class="pub-item fade-in">
+      <div class="pub-year">2023</div>
+      <div>
+        <div class="pub-title">Self-Supervised Representations for 3D Scene Understanding</div>
+        <div class="pub-authors">Author A, Prof. [Name] et al.</div>
+        <span class="pub-venue">ICLR 2023</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div>
+    <div class="section-header fade-in">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="fade-in">
+      <div class="contact-row">
+        <span class="contact-label">Address</span>
+        <span class="contact-value">Room XXX, Science Building<br>Peking University, Haidian District<br>Beijing, China 100871</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Email</span>
+        <span class="contact-value">lab@pku.edu.cn</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Office Hours</span>
+        <span class="contact-value">Monday – Friday, 9:00 AM – 5:00 PM</span>
+      </div>
+    </div>
+  </div>
+  <div class="join-box fade-in">
+    <h3>Join Our Lab</h3>
+    <p>We are always looking for motivated Ph.D. students, master's students, and postdoctoral researchers. If you are passionate about AI research, we'd love to hear from you.</p>
+    <a href="mailto:lab@pku.edu.cn">Send Your Application →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Intelligent Computing Lab · Peking University</span>
+  <span>INTELLIGENT COMPUTING LAB</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
