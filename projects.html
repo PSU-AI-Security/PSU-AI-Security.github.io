@@ -13,7 +13,7 @@
       <div class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <a
           href="index.html"
-          class="inline-flex items-center gap-2.5 text-lg font-semibold tracking-tight text-white transition-colors hover:text-accent"
+          class="order-1 inline-flex min-w-0 items-center gap-2.5 text-lg font-semibold tracking-tight text-white transition-colors hover:text-accent"
         >
           <img
             src="assets/images/logo.png"
@@ -23,28 +23,69 @@
             class="h-8 w-auto shrink-0 object-contain"
             decoding="async"
           />
-          <span>Safe and Secure AI</span>
+          <span class="truncate">Safe and Secure AI</span>
         </a>
-        <nav aria-label="Main" class="flex flex-wrap items-center gap-1 text-sm font-medium sm:gap-2">
+        <button
+          type="button"
+          id="site-nav-toggle"
+          class="order-2 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md text-white/90 hover:bg-white/10 md:hidden"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="Open menu"
+        >
+          <span class="site-nav-icon-open" aria-hidden="true">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="h-6 w-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
+          </span>
+          <span class="site-nav-icon-close hidden" aria-hidden="true">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="h-6 w-6"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </span>
+        </button>
+        <nav
+          id="site-nav"
+          class="order-3 hidden w-full flex-col gap-1 border-t border-white/10 pt-3 text-sm font-medium md:order-2 md:flex md:w-auto md:flex-row md:items-center md:gap-2 md:border-t-0 md:pt-0"
+          aria-label="Main"
+        >
           <a
             href="people.html"
-            class="rounded-md px-3 py-2 text-white/85 transition-colors hover:bg-white/10 hover:text-white"
+            class="block w-full rounded-md px-3 py-2 text-left text-white/85 transition-colors hover:bg-white/10 hover:text-white md:inline-block md:w-auto"
             >People</a
           >
           <a
             href="papers.html"
-            class="rounded-md px-3 py-2 text-white/85 transition-colors hover:bg-white/10 hover:text-white"
+            class="block w-full rounded-md px-3 py-2 text-left text-white/85 transition-colors hover:bg-white/10 hover:text-white md:inline-block md:w-auto"
             >Papers</a
           >
           <a
             href="projects.html"
-            class="rounded-md bg-white/15 px-3 py-2 text-white"
+            class="block w-full rounded-md bg-white/15 px-3 py-2 text-left text-white md:inline-block md:w-auto"
             aria-current="page"
             >Projects</a
           >
           <a
             href="about.html"
-            class="rounded-md px-3 py-2 text-white/85 transition-colors hover:bg-white/10 hover:text-white"
+            class="block w-full rounded-md px-3 py-2 text-left text-white/85 transition-colors hover:bg-white/10 hover:text-white md:inline-block md:w-auto"
             >About</a
           >
         </nav>
@@ -150,5 +191,6 @@
         <p>Trustworthy systems and AI security research</p>
       </div>
     </footer>
+    <script src="assets/js/site-nav.js" defer></script>
   </body>
 </html>
