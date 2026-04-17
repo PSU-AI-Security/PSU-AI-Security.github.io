@@ -1,5 +1,5 @@
 {
-  "name": "psuaisec-github-io",
+  "name": "safe-secure-ai-site",
   "private": true,
   "scripts": {
     "build": "npx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/site.css --minify"

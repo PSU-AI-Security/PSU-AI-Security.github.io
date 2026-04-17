@@ -3,14 +3,15 @@
 @source "../../*.html";
 
 @theme {
-  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 
-  --color-psu-navy: #001e44;
-  --color-psu-blue: #1e407c;
-  --color-psu-pugh: #96bee6;
-  --color-psu-white: #ffffff;
-  --color-psu-mist: #f4f8fb;
+  --color-primary: #111827;
+  --color-secondary: #2563eb;
+  --color-accent: #94a3b8;
+  --color-canvas: #f8fafc;
+  --color-ink: #1e293b;
+  --color-success: #10b981;
 }
 
 @layer base {
@@ -19,6 +20,119 @@
   }
 
   a:not([class]) {
-    @apply text-psu-blue underline decoration-psu-pugh/60 underline-offset-2 transition-colors hover:text-psu-navy hover:decoration-psu-blue;
+    @apply text-secondary underline decoration-accent/60 underline-offset-2 transition-colors hover:text-primary hover:decoration-secondary;
+  }
+}
+
+@layer components {
+  /**
+   * Home hero: mesh + grid + right-side SVG graphic (see index.html).
+   */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-color: var(--color-canvas);
+    background-image:
+      radial-gradient(
+        ellipse 95% 75% at 92% -8%,
+        rgb(37 99 235 / 0.26),
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse 70% 60% at 100% 55%,
+        rgb(37 99 235 / 0.1),
+        transparent 58%
+      ),
+      radial-gradient(
+        ellipse 55% 50% at 0% 100%,
+        rgb(17 24 39 / 0.11),
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse 45% 40% at 35% 25%,
+        rgb(255 255 255 / 0.95),
+        transparent 65%
+      ),
+      linear-gradient(
+        115deg,
+        var(--color-white) 0%,
+        rgb(248 250 252 / 0.85) 38%,
+        var(--color-canvas) 100%
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgb(148 163 184 / 0.09) 0 1px,
+        transparent 1px 48px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        rgb(148 163 184 / 0.09) 0 1px,
+        transparent 1px 48px
+      );
+  }
+
+  .hero-visual {
+    position: absolute;
+    inset-block: 0;
+    right: 0;
+    z-index: 1;
+    display: none;
+    width: min(52%, 30rem);
+    pointer-events: none;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: max(0.5rem, env(safe-area-inset-right));
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgb(0 0 0 / 0.45) 18%,
+      rgb(0 0 0 / 1) 42%
+    );
+  }
+
+  @media (min-width: 640px) {
+    .hero-visual {
+      display: flex;
+    }
+  }
+
+  .hero-visual svg {
+    height: 100%;
+    max-height: 26rem;
+    width: 100%;
+    object-fit: contain;
+    object-position: right center;
+    opacity: 0.92;
+  }
+
+  /**
+   * Home hero: dark gradient band so the logo and headline read clearly together.
+   */
+  .hero-home {
+    background-color: var(--color-primary);
+    background-image:
+      radial-gradient(
+        ellipse 100% 85% at 12% -5%,
+        rgb(37 99 235 / 0.42),
+        transparent 58%
+      ),
+      radial-gradient(
+        ellipse 75% 65% at 92% 105%,
+        rgb(37 99 235 / 0.28),
+        transparent 58%
+      ),
+      radial-gradient(
+        ellipse 55% 45% at 50% 40%,
+        rgb(255 255 255 / 0.06),
+        transparent 65%
+      ),
+      linear-gradient(
+        165deg,
+        rgb(15 23 42) 0%,
+        var(--color-primary) 48%,
+        rgb(17 24 39) 100%
+      );
   }
 }

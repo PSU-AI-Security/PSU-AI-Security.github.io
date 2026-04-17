@@ -1,3 +1,3 @@
-# PSU AI Security Lab
+# Safe and Secure AI
 
-**PSU AI Security Lab** website
+**Safe and Secure AI** website
