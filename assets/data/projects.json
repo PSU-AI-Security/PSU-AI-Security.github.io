@@ -1,0 +1,112 @@
+[
+  {
+    "title": "BIC-MMD",
+    "description": "Codes for the paper \"A BIC based Mixture Model Defense against Data Poisoning Attacks on Classifiers\"",
+    "links": [
+      {
+        "url": "https://github.com/SafeAndSecureAI/BIC-MMD",
+        "label": "GitHub Link"
+      }
+    ]
+  },
+  {
+    "title": "PCAD",
+    "description": "extract prioritized clusters of anomalous samples and their salient (continuous, real-valued) feature subsets",
+    "links": [
+      {
+        "url": "https://github.com/SafeAndSecureAI/PCAD",
+        "label": "GitHub Link"
+      }
+    ]
+  },
+  {
+    "title": "maxEnt_semisupervised",
+    "description": "A Maximum Entropy Framework for Semisupervised and Active Learning With Unknown and Label-Scarce Classes",
+    "links": [
+      {
+        "url": "https://github.com/SafeAndSecureAI/maxEnt_semisupervised",
+        "label": "GitHub Link"
+      }
+    ]
+  },
+  {
+    "title": "ada_pgd_attack",
+    "description": "",
+    "links": [
+      {
+        "url": "https://github.com/SafeAndSecureAI/ada_pgd_attack",
+        "label": "GitHub Link"
+      }
+    ]
+  },
+  {
+    "title": "PCBA",
+    "description": "A Backdoor Attack against 3D Point Cloud Classifiers (ICCV2021)",
+    "links": [
+      {
+        "url": "https://github.com/SafeAndSecureAI/PCBA",
+        "label": "GitHub Link"
+      }
+    ]
+  },
+  {
+    "title": "2ClassBADetection",
+    "description": "Post-Training Detection of Backdoor Attacks for Two-Class and Multi-Attack Scenarios (ICLR2022)",
+    "links": [
+      {
+        "url": "https://github.com/SafeAndSecureAI/2ClassBADetection",
+        "label": "GitHub Link"
+      }
+    ]
+  },
+  {
+    "title": "MMAC",
+    "description": "The implementation of MMAC method",
+    "links": [
+      {
+        "url": "https://github.com/SafeAndSecureAI/MMAC",
+        "label": "GitHub Link"
+      }
+    ]
+  },
+  {
+    "title": "MM-BD",
+    "description": "The implementation of the IEEE S&P 2024 paper MM-BD: Post-Training Detection of Backdoor Attacks with Arbitrary Backdoor Pattern Types Using a Maximum Margin St…",
+    "links": [
+      {
+        "url": "https://github.com/SafeAndSecureAI/MM-BD",
+        "label": "GitHub Link"
+      }
+    ]
+  },
+  {
+    "title": "PT-RED",
+    "description": "This is the repo for TNNLS'22 paper \"Detection of Backdoors in Trained Classifiers Without Access to the Training Set\" by Zhen Xiang, David J Miller, George Kes…",
+    "links": [
+      {
+        "url": "https://github.com/SafeAndSecureAI/PT-RED",
+        "label": "GitHub Link"
+      }
+    ]
+  },
+  {
+    "title": "SafeAndSecureAI.github.io",
+    "description": "Penn State AI Security Lab",
+    "links": [
+      {
+        "url": "https://github.com/SafeAndSecureAI/SafeAndSecureAI.github.io",
+        "label": "GitHub Link"
+      }
+    ]
+  },
+  {
+    "title": "acgan-ada",
+    "description": "implementation of the paper",
+    "links": [
+      {
+        "url": "https://github.com/SafeAndSecureAI/acgan-ada",
+        "label": "GitHub Link"
+      }
+    ]
+  }
+]

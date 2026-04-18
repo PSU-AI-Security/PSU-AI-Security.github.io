@@ -1,0 +1,62 @@
+[
+  {
+    "title": "BABI: Blacklisted Accretion for Backdoor Inversion in Instruction Fine-Tuned LLMs",
+    "authorsLine": "Z. Li, G. Yang, D.J. Miller and G. Kesidis",
+    "venueLine": "In Proc. IEEE ICASSP, May 2026",
+    "links": []
+  },
+  {
+    "title": "Improving Maximum Margin Backdoor Detection by Class Subspace Decorrelation",
+    "authorsLine": "G. Yang, D.J. Miller, G. Kesidis",
+    "venueLine": "In Proc. IEEE ICASSP, May 2026",
+    "links": []
+  },
+  {
+    "title": "Backdoor Inversion in Neural-Activation Space",
+    "authorsLine": "G. Yang, X. Li, H. Wang, G. Kesidis, D.J. Miller",
+    "venueLine": "In Proc IEEE MLSP, Istanbul, Aug. 2025",
+    "links": []
+  },
+  {
+    "title": "Maximum Margin Based Activation Clipping for Post-Training Overfitting Mitigation in DNN Classifiers",
+    "authorsLine": "H. Wang, D.J. Miller and G. Kesidis",
+    "venueLine": "IEEE Trans. Artificial Intelligence (TAI) 1, Aug. 2025",
+    "links": []
+  },
+  {
+    "title": "MM-BD: Post-Training Detection of Backdoor Attacks with Arbitrary Backdoor Pattern Types Using a Maximum Margin Statistic",
+    "authorsLine": "H. Wang, Z. Xiang, D.J. Miller, G. Kesidis",
+    "venueLine": "In Proc. IEEE Symposium on Security & Privacy, San Francisco, May 2024",
+    "links": []
+  },
+  {
+    "title": "Activation Clipping for Universal Backdoor Mitigation and Test-Time Detection",
+    "authorsLine": "H. Wang, Z. Xiang, D.J. Miller, G. Kesidis",
+    "venueLine": "In Proc. IEEE MLSP, Sept. 2024",
+    "links": []
+  },
+  {
+    "title": "Adversarial Learning and Secure AI",
+    "authorsLine": "D.J. Miller, Z. Xiang and G. Kesidis",
+    "venueLine": "Cambridge University Press, Sept. 2023",
+    "links": []
+  },
+  {
+    "title": "Detection of Backdoors in Trained Classifiers Without Access to the Training Set",
+    "authorsLine": "Z. Xiang, D.J. Miller, and G. Kesidis",
+    "venueLine": "IEEE Trans. on Neural Networks and Learning Systems (TNNLS) 33(3), March 2022 (shorter version in Proc. IEEE ICASSP, May 2020)",
+    "links": []
+  },
+  {
+    "title": "Anomaly Detection of Attacks (ADA) on DNN Classifiers at Test Time",
+    "authorsLine": "D.J. Miller, Y. Wang, G. Kesidis",
+    "venueLine": "Neural Computation 31(8), Aug. 2019 (shorter version in Proc. IEEE MLSP, Sept. 2018)",
+    "links": []
+  },
+  {
+    "title": "Parsimonious Cluster-based Anomaly Detection (PCAD)",
+    "authorsLine": "D.J. Miller, Z. Qiu and G. Kesidis",
+    "venueLine": "In Proc. IEEE MLSP, Aalborg, Denmark, Sept. 2018",
+    "links": []
+  }
+]

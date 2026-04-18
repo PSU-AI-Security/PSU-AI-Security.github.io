@@ -68,9 +68,9 @@
           aria-label="Main"
         >
           <a
-            href="people.html"
+            href="index.html"
             class="block w-full rounded-md px-3 py-2 text-left text-white/85 transition-colors hover:bg-white/10 hover:text-white md:inline-block md:w-auto"
-            >People</a
+            >Home</a
           >
           <a
             href="papers.html"
@@ -84,9 +84,9 @@
             >Projects</a
           >
           <a
-            href="about.html"
+            href="people.html"
             class="block w-full rounded-md px-3 py-2 text-left text-white/85 transition-colors hover:bg-white/10 hover:text-white md:inline-block md:w-auto"
-            >About</a
+            >People</a
           >
         </nav>
       </div>
@@ -106,92 +106,7 @@
 
       <section class="py-12 sm:py-14" aria-label="Publication list">
         <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <ul class="space-y-4">
-            <li>
-              <article
-                class="rounded-xl border border-accent/30 bg-white p-6 shadow-sm transition hover:border-secondary/35"
-              >
-                <h2 class="text-lg font-semibold leading-snug text-ink">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </h2>
-                <p class="mt-2 text-sm text-ink/65">USENIX Security · 2025</p>
-                <p class="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
-                  <a href="#" class="text-secondary hover:text-primary">PDF</a>
-                  <a href="#" class="text-secondary hover:text-primary">arXiv</a>
-                </p>
-              </article>
-            </li>
-            <li>
-              <article
-                class="rounded-xl border border-accent/30 bg-white p-6 shadow-sm transition hover:border-secondary/35"
-              >
-                <h2 class="text-lg font-semibold leading-snug text-ink">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                </h2>
-                <p class="mt-2 text-sm text-ink/65">IEEE Symposium on Security and Privacy · 2025</p>
-                <p class="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
-                  <a href="#" class="text-secondary hover:text-primary">PDF</a>
-                  <a href="#" class="text-secondary hover:text-primary">DOI</a>
-                </p>
-              </article>
-            </li>
-            <li>
-              <article
-                class="rounded-xl border border-accent/30 bg-white p-6 shadow-sm transition hover:border-secondary/35"
-              >
-                <h2 class="text-lg font-semibold leading-snug text-ink">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                </h2>
-                <p class="mt-2 text-sm text-ink/65">NeurIPS · 2024</p>
-                <p class="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
-                  <a href="#" class="text-secondary hover:text-primary">PDF</a>
-                  <a href="#" class="text-secondary hover:text-primary">arXiv</a>
-                </p>
-              </article>
-            </li>
-            <li>
-              <article
-                class="rounded-xl border border-accent/30 bg-white p-6 shadow-sm transition hover:border-secondary/35"
-              >
-                <h2 class="text-lg font-semibold leading-snug text-ink">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                </h2>
-                <p class="mt-2 text-sm text-ink/65">CCS · 2024</p>
-                <p class="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
-                  <a href="#" class="text-secondary hover:text-primary">PDF</a>
-                  <a href="#" class="text-secondary hover:text-primary">DOI</a>
-                </p>
-              </article>
-            </li>
-            <li>
-              <article
-                class="rounded-xl border border-accent/30 bg-white p-6 shadow-sm transition hover:border-secondary/35"
-              >
-                <h2 class="text-lg font-semibold leading-snug text-ink">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                </h2>
-                <p class="mt-2 text-sm text-ink/65">NDSS · 2024</p>
-                <p class="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
-                  <a href="#" class="text-secondary hover:text-primary">PDF</a>
-                  <a href="#" class="text-secondary hover:text-primary">arXiv</a>
-                </p>
-              </article>
-            </li>
-            <li>
-              <article
-                class="rounded-xl border border-accent/30 bg-white p-6 shadow-sm transition hover:border-secondary/35"
-              >
-                <h2 class="text-lg font-semibold leading-snug text-ink">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                </h2>
-                <p class="mt-2 text-sm text-ink/65">CVPR · 2023</p>
-                <p class="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
-                  <a href="#" class="text-secondary hover:text-primary">PDF</a>
-                  <a href="#" class="text-secondary hover:text-primary">DOI</a>
-                </p>
-              </article>
-            </li>
-          </ul>
+          <ul id="papers-list" class="space-y-4"></ul>
         </div>
       </section>
     </main>
@@ -203,5 +118,6 @@
       </div>
     </footer>
     <script src="assets/js/site-nav.js" defer></script>
+    <script type="module" src="assets/js/papers-page.js"></script>
   </body>
 </html>
